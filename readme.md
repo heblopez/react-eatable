@@ -2,6 +2,16 @@
 
 ![Screenshot-IndexPage](https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/bLuKKZvz/8dbdd5a3-7a51-480b-a061-33cc4dc8681d.png?source=viewer&v=18ea37d12f31e7165e1a197d10d9d823)
 
+## Getting started
+
+- Project developed with Vite. To get started with this app, simply clone this repository to your local machine and then run the following commands in your CLI:
+
+```
+  $ npm install
+  $ cd react-eatable
+  $ npm run dev
+```
+
 ## Resources
 
 - Design: here
