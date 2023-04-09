@@ -1,6 +1,6 @@
 # Eatable Dashboard
 
-![Screenshot-IndexPage](https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/bLuKKZvz/8dbdd5a3-7a51-480b-a061-33cc4dc8681d.png?source=viewer&v=18ea37d12f31e7165e1a197d10d9d823)
+![Screenshot-IndexPage](https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/bLuKKZvz/8dbdd5a3-7a51-480b-a061-33cc4dc8681d.png)
 
 ## Getting started
 
@@ -26,6 +26,7 @@ The product dashboard should accomplish the following:
 - It should connect to an external API to fetch and persist data.
 - It should use CSS in JS for the styles using Emotion.
 - It should be able to handle page refreshes without losing the current state of the app. (LocalStorage or SessionStorage are both valid).
+- It should handle errors by showing useful messages to the user.
 
 # Main user stories
 
