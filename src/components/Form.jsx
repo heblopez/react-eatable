@@ -45,7 +45,7 @@ const StyledError = styled.p`
   font-size: 12px;
 `
 
-export function Form({name, price, description, category, picture_url, handleChange, handleSubmit, errors, textButton}) {
+export function Form({name, price, description, category, picture_url, handleChange, handleBlur, handleSubmit, errors, touched, textButton}) {
   
   const isValid = Object.keys(errors).length === 0;
 
@@ -53,13 +53,13 @@ export function Form({name, price, description, category, picture_url, handleCha
     <WrapperForm onSubmit={handleSubmit}>
       <InputGroup>
         <StyledLabel>Name</StyledLabel>
-        <StyledInput type="text" name="name" value={name} onChange={handleChange}/>
-        <StyledError>{errors.name}</StyledError>
+        <StyledInput type="text" name="name" value={name} onChange={handleChange} onBlur={handleBlur}/>
+        {touched.name && (<StyledError>{errors.name}</StyledError>)}
       </InputGroup>
       <InputGroup>
         <StyledLabel>Price</StyledLabel>
-        <StyledInput type="number" name="price" value={price} onChange={handleChange} step="0.01" min="0" max="100.00"/>
-        <StyledError>{errors.price}</StyledError>
+        <StyledInput type="number" name="price" value={price} onChange={handleChange} onBlur={handleBlur} step="0.01" min="0" max="100.00"/>
+        {touched.price && (<StyledError>{errors.price}</StyledError>)}
       </InputGroup>
       <InputGroup>
         <StyledLabel>Description</StyledLabel>
@@ -71,8 +71,8 @@ export function Form({name, price, description, category, picture_url, handleCha
       </InputGroup>
       <InputGroup>
         <StyledLabel>Picture URL</StyledLabel>
-        <StyledTextArea name="picture_url" value={picture_url} onChange={handleChange}/>
-        <StyledError>{errors.picture_url}</StyledError>
+        <StyledTextArea name="picture_url" value={picture_url} onChange={handleChange} onBlur={handleBlur}/>
+        {touched.picture_url && (<StyledError>{errors.picture_url}</StyledError>)}
       </InputGroup>
       <Button disabled={!isValid} type="submit">{textButton}</Button>
     </WrapperForm>

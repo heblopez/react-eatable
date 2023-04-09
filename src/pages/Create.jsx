@@ -16,6 +16,7 @@ export function CreatePage() {
     picture_url: "",
   });
   const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
   useEffect(() => {
     const dataSaved = JSON.parse(sessionStorage.getItem("product-form"));
@@ -52,10 +53,15 @@ export function CreatePage() {
       setDataForm({...dataForm, [name]: (value*100)}) :
       setDataForm({...dataForm, [name]: value});
 
-    setErrors(validate(dataForm))
     let dataProduct = JSON.stringify(dataForm);
     sessionStorage.setItem("product-form", dataProduct);
   }
+
+  function handleBlur(e) {
+    const name = e.target.name;
+    setTouched({...touched, [name]: true});
+    setErrors(validate(dataForm))
+  }  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -71,7 +77,7 @@ export function CreatePage() {
     <WrapperPage>
       <ContainerTitle><h1 style={{fontSize:"inherit"}}>Create Product</h1></ContainerTitle>
       <Form name={name} price={price/100} description={description} category={category} picture_url={picture_url}
-          handleChange={handleChange} handleSubmit={handleSubmit} errors={errors} textButton="Create">
+          handleChange={handleChange} handleBlur={handleBlur} handleSubmit={handleSubmit} errors={errors} touched={touched} textButton="Create">
       </Form>
     </WrapperPage>
   )
