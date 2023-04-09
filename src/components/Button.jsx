@@ -21,6 +21,11 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #ff6109;
   }
+  &:disabled {
+    background-color: ${colors.gray[500]};
+    color: ${colors.white};
+    cursor: not-allowed;
+  }
 `
 const TextButton = styled.span`
   color: ${colors.white};
@@ -30,10 +35,10 @@ const TextButton = styled.span`
   text-align: center;
 `
 
-export function Button({children}) {
+export function Button({children, disabled}) {
   return (
     <ContainerButton>
-      <StyledButton>
+      <StyledButton disabled={disabled}>
         <TextButton>{children}</TextButton>
       </StyledButton>
     </ContainerButton>
