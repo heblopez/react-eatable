@@ -89,6 +89,7 @@ export const global = css`
     color: ${colors.gray[900]};
     width: 414px;
     height: 100vh;
+    min-height: 896px;
     display: block;
     margin: 0 auto;
     background-color: #f6f6f9;

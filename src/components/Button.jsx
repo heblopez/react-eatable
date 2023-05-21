@@ -8,8 +8,8 @@ const ContainerButton = styled.div`
   align-items: center;
   position: absolute;
   bottom: 12px;
-  height: 10vh;
-`
+  height: 10%;
+`;
 
 const StyledButton = styled.button`
   background-color: ${colors.orange};
@@ -26,21 +26,21 @@ const StyledButton = styled.button`
     color: ${colors.white};
     cursor: not-allowed;
   }
-`
+`;
 const TextButton = styled.span`
   color: ${colors.white};
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
   text-align: center;
-`
+`;
 
-export function Button({children, disabled}) {
+export function Button({ children, disabled }) {
   return (
     <ContainerButton>
       <StyledButton disabled={disabled}>
         <TextButton>{children}</TextButton>
       </StyledButton>
     </ContainerButton>
-  )
+  );
 }

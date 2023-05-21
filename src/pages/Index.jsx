@@ -11,45 +11,47 @@ import { motion } from "framer-motion";
 
 export const WrapperPage = styled.div`
   height: 100vh;
-  min-height: 700px;
+  min-height: 896px;
   position: relative;
-`
+`;
 const ContainerTitle = styled.div`
   display: flex;
-  height: 10vh;
+  height: 10%;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 24px;
   line-height: 28px;
-`
+`;
 const CarouselWrapper = styled(motion.div)`
-  height: 77vh;
+  height: 77%;
   overflow: hidden;
   cursor: grab;
-`
+`;
 const ProductsContainer = styled(motion.div)`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 40px;
-`
+`;
 
 export function IndexPage() {
-
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const carousel = useRef();
   const [height, setHeight] = useState(null);
   const [idProductDelete, setIdProductDelete] = useState(null);
   const [reload, setReload] = useState();
-  
+
   useEffect(() => {
     getProducts()
       .then((data) => {
         setProducts(data);
         setReload(false);
-        setHeight(carousel.current.scrollHeight - carousel.current.offsetHeight);})
+        setHeight(
+          carousel.current.scrollHeight - carousel.current.offsetHeight
+        );
+      })
       .catch((err) => console.log(err));
   }, [reload]);
 
@@ -62,7 +64,8 @@ export function IndexPage() {
     deleteProductId(idProductDelete)
       .then(() => {
         setShowModal(false);
-        setReload(true);})
+        setReload(true);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -70,27 +73,48 @@ export function IndexPage() {
     setShowModal(false);
   }
 
-  if (reload === undefined || reload === true ) {
-    
+  if (reload === undefined || reload === true) {
     return (
-      <div style={{ display:"flex", height:"100vh", justifyContent: "center", alignItems: "center"}}>
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Rings color={`${colors.orange}`} />
       </div>
-    )
+    );
   } else {
     return (
       <WrapperPage>
-      <ContainerTitle><h1 style={{fontSize:"inherit"}}>Products Dashboard</h1></ContainerTitle>
-      <CarouselWrapper ref={carousel} whileTap={{cursor: "grabbing"}}>
-        <ProductsContainer drag="y" dragConstraints={{ bottom: 0, top: -height }} >
-          { products.map((dish, index) => (<motion.div key={index+1}><FoodCard key={index+1} product={dish} onDelete={handleOpen}/></motion.div>)) }
-        </ProductsContainer>
-      </CarouselWrapper>
-      <Link to={"/create"}>
-        <Button>Create Product</Button>
-      </Link>
-      {showModal && <ModalPortal onDelete={handleDelete} onClose={handleClose} />}
+        <ContainerTitle>
+          <h1 style={{ fontSize: "inherit" }}>Products Dashboard</h1>
+        </ContainerTitle>
+        <CarouselWrapper ref={carousel} whileTap={{ cursor: "grabbing" }}>
+          <ProductsContainer
+            drag="y"
+            dragConstraints={{ bottom: 0, top: -height }}
+          >
+            {products.map((dish, index) => (
+              <motion.div key={index + 1}>
+                <FoodCard
+                  key={index + 1}
+                  product={dish}
+                  onDelete={handleOpen}
+                />
+              </motion.div>
+            ))}
+          </ProductsContainer>
+        </CarouselWrapper>
+        <Link to={"/create"}>
+          <Button>Create Product</Button>
+        </Link>
+        {showModal && (
+          <ModalPortal onDelete={handleDelete} onClose={handleClose} />
+        )}
       </WrapperPage>
-    )
+    );
   }
 }
