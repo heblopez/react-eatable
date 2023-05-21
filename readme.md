@@ -14,9 +14,8 @@
 
 ## Resources
 
-- Design: here
+- Design: [Figma here](https://www.figma.com/file/9iX52juOI5ZghyewK0svxO/Eatable?type=design&node-id=2569-152&t=dKDE0a7UcMRhDhv1-0)
 - API endpoint: https://react-eatable-api.herokuapp.com
-- Backend API: here
 
 ## Requirements
 
